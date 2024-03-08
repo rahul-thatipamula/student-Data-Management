@@ -30,7 +30,7 @@ public class VerifyAdmin {
 		try {
 	
 		con = GetConnection.createConnection();
-		String command = "select * from admindetails where email =? and password = ? ";
+		String command = "select * from admindata where username =? and password = ? ";
                 preparedStatement= con.prepareStatement(command);
                 preparedStatement.setString(1, userName);
                 preparedStatement.setString(2, password);
@@ -39,9 +39,7 @@ public class VerifyAdmin {
                 if(s.next()){
                     return true; 
                 }
-                else {
-                    return false;
-                }
+              
                 
                 }
                 catch(SQLException e){

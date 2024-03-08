@@ -81,11 +81,11 @@
                                           <Component id="studentNameField1" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="changePhotoBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="male1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="male" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="female1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="female" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="others1" min="-2" pref="78" max="-2" attributes="0"/>
+                                              <Component id="others" min="-2" pref="78" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="courseDurationField1" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="rollNumberField1" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -190,9 +190,9 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="male1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="female1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="others1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="male" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="female" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="others" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -444,7 +444,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateBtnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="male1">
+            <Component class="javax.swing.JRadioButton" name="male">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="gender"/>
@@ -452,10 +452,11 @@
                 <Property name="text" type="java.lang.String" value="Male"/>
               </Properties>
               <Events>
-                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="male1StateChanged"/>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="maleStateChanged"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="maleActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="female1">
+            <Component class="javax.swing.JRadioButton" name="female">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="gender"/>
@@ -463,12 +464,12 @@
                 <Property name="text" type="java.lang.String" value="Female"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="others1">
+            <Component class="javax.swing.JRadioButton" name="others">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="gender"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="others"/>
+                <Property name="text" type="java.lang.String" value="Others"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel27">

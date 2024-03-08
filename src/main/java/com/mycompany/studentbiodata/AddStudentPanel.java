@@ -76,11 +76,7 @@ public class AddStudentPanel extends javax.swing.JPanel {
         dateOfBirthField = new javax.swing.JTextField();
 
         studentNameField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        studentNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                studentNameFieldActionPerformed(evt);
-            }
-        });
+       
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Roll Number");
@@ -124,25 +120,13 @@ public class AddStudentPanel extends javax.swing.JPanel {
                 rollNumberFieldFocusLost(evt);
             }
         });
-        rollNumberField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rollNumberFieldActionPerformed(evt);
-            }
-        });
+        
 
         fatherNameField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        fatherNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fatherNameFieldActionPerformed(evt);
-            }
-        });
+       
 
         motherNameField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        motherNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                motherNameFieldActionPerformed(evt);
-            }
-        });
+       
 
         emailIdField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         emailIdField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -150,42 +134,20 @@ public class AddStudentPanel extends javax.swing.JPanel {
                 emailIdFieldFocusLost(evt);
             }
         });
-        emailIdField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailIdFieldActionPerformed(evt);
-            }
-        });
+       
 
         branchField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        branchField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                branchFieldActionPerformed(evt);
-            }
-        });
+       
 
         attendaceField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        attendaceField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                attendaceFieldActionPerformed(evt);
-            }
-        });
+       
 
         courseDurationField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023-2027", "2022-2026", "2021-2025 ", "2020-2024", "2019-2023 ", "2018-2022", "2017-2021 ", "2016-2020", "2015-2019" }));
-        courseDurationField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                courseDurationFieldActionPerformed(evt);
-            }
-        });
+       
 
         addressField.setColumns(20);
         addressField.setRows(5);
-        addressField.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                addressFieldInputMethodTextChanged(evt);
-            }
-        });
+      
         jScrollPane2.setViewportView(addressField);
 
         photoSelect.setText("Select Photo");
@@ -204,26 +166,18 @@ public class AddStudentPanel extends javax.swing.JPanel {
 
         gender.add(male);
         male.setText("Male");
-        male.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                maleStateChanged(evt);
-            }
-        });
+       
 
         gender.add(female);
         female.setText("Female");
 
         gender.add(others);
-        others.setText("others");
+        others.setText("Others");
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel15.setText("Current CGPA");
 
-        gpaField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gpaFieldActionPerformed(evt);
-            }
-        });
+        
 
         backBtn.setText("back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -232,6 +186,11 @@ public class AddStudentPanel extends javax.swing.JPanel {
             }
         });
 
+        dateOfBirthField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                dateOfBirthFieldFocusLost(evt);
+            }
+        });
         dateOfBirthField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dateOfBirthFieldActionPerformed(evt);
@@ -261,33 +220,39 @@ public class AddStudentPanel extends javax.swing.JPanel {
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15))
                         .addGap(108, 108, 108)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(courseDurationField, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(studentNameField)
-                            .addComponent(rollNumberField)
-                            .addComponent(fatherNameField)
-                            .addComponent(motherNameField)
-                            .addComponent(emailIdField)
-                            .addComponent(branchField)
-                            .addComponent(attendaceField)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(male)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(female)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(others, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(gpaField)
-                            .addComponent(dateOfBirthField)
-                            .addComponent(photoSelect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(photoSelect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(branchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(male)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(female)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(others, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(emailIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(studentNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rollNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fatherNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(motherNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dateOfBirthField, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(attendaceField, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(gpaField, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(backBtn))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(261, 261, 261)
                         .addComponent(submitBtn)))
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addGap(106, 106, 106))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {branchField, emailIdField});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -295,24 +260,26 @@ public class AddStudentPanel extends javax.swing.JPanel {
                 .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(studentNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel1)
+                    .addComponent(studentNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(rollNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(fatherNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rollNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(motherNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(motherNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(dateOfBirthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
@@ -329,13 +296,13 @@ public class AddStudentPanel extends javax.swing.JPanel {
                             .addComponent(branchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(attendaceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel8)
+                            .addComponent(attendaceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
-                            .addComponent(gpaField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(gpaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(courseDurationField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -346,19 +313,18 @@ public class AddStudentPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(photoSelect)
-                            .addComponent(jLabel11)))
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(submitBtn))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(dateOfBirthField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(submitBtn)
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addGap(1, 1, 1)
+                        .addComponent(fatherNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {branchField, emailIdField, motherNameField});
+
     }// </editor-fold>//GEN-END:initComponents
-
-    private void studentNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentNameFieldActionPerformed
-
-    }//GEN-LAST:event_studentNameFieldActionPerformed
 
     private void rollNumberFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rollNumberFieldFocusLost
         String rollNumber = rollNumberField.getText();
@@ -376,42 +342,12 @@ public class AddStudentPanel extends javax.swing.JPanel {
             ResultSet rs = statement.executeQuery();       
              return rs.next();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+              String errorMessage = ex.getMessage();
+           JOptionPane.showMessageDialog(null, "An error occurred: " + errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
         }
         return false;
     }
-    private void rollNumberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollNumberFieldActionPerformed
-
-    }//GEN-LAST:event_rollNumberFieldActionPerformed
-
-    private void fatherNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fatherNameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fatherNameFieldActionPerformed
-
-    private void motherNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_motherNameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_motherNameFieldActionPerformed
-
-    private void emailIdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailIdFieldActionPerformed
-       
-    }//GEN-LAST:event_emailIdFieldActionPerformed
-
-    private void branchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_branchFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_branchFieldActionPerformed
-
-    private void attendaceFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendaceFieldActionPerformed
-
-    }//GEN-LAST:event_attendaceFieldActionPerformed
-
-    private void courseDurationFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseDurationFieldActionPerformed
-
-    }//GEN-LAST:event_courseDurationFieldActionPerformed
-
-    private void addressFieldInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_addressFieldInputMethodTextChanged
-
-    }//GEN-LAST:event_addressFieldInputMethodTextChanged
-
+  
     private void photoSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_photoSelectActionPerformed
         JFileChooser fileChooser = new JFileChooser();
         int returnValue = fileChooser.showOpenDialog(null);
@@ -421,9 +357,11 @@ public class AddStudentPanel extends javax.swing.JPanel {
                 photoSelect.setText(selectedFile.getPath());
                 uploadPhotoToDatabase(selectedFile);
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                 String errorMessage = ex.getMessage();
+           JOptionPane.showMessageDialog(null, "An error occurred: " + errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
             } catch (IOException ex) {
-                Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+                 String errorMessage = ex.getMessage();
+           JOptionPane.showMessageDialog(null, "An error occurred: " + errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_photoSelectActionPerformed
@@ -500,21 +438,20 @@ SetGetStudentData setGetStudentData=null;
                 }
 
             } catch (Exception s) {
-                s.printStackTrace();
+                  String errorMessage = s.getMessage();
+            if (errorMessage.contains("date") || errorMessage.contains("format")) {
+                JOptionPane.showMessageDialog(null, "Date formatting error occurred: " + errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "An error occurred: " + errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
             }
+            }
+          
         } else {
             JOptionPane.showMessageDialog(null, "Enter all Fields to Save");
         }
     }//GEN-LAST:event_submitBtnActionPerformed
 
-    private void maleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_maleStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maleStateChanged
-
-    private void gpaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gpaFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_gpaFieldActionPerformed
-
+  
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
           adminPanelRef.adminHomePanel.remove(this);
        adminPanelRef.adminHomePanel.add(adminPanelRef.homePanel);
@@ -541,14 +478,21 @@ SetGetStudentData setGetStudentData=null;
         }
         
     }//GEN-LAST:event_emailIdFieldFocusLost
+
+    private void dateOfBirthFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dateOfBirthFieldFocusLost
+ 
+    
+    
+    }//GEN-LAST:event_dateOfBirthFieldFocusLost
  private void uploadPhotoToDatabase(File selectedFile) throws SQLException, IOException  {       
         try {
           
             FileInputStream studentPhotoFile = new FileInputStream(selectedFile);
             setGetStudentData.setPhotoPath(studentPhotoFile);
 
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (Exception ex) {
+            String errorMessage = ex.getMessage();
+           JOptionPane.showMessageDialog(null, "An error occurred: " + errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

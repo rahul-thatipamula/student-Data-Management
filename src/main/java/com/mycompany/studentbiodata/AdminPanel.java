@@ -26,9 +26,6 @@ public class AdminPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        gender = new javax.swing.ButtonGroup();
-        gen = new javax.swing.ButtonGroup();
-        hel = new javax.swing.ButtonGroup();
         adminHomePanel = new javax.swing.JPanel();
         homePanel = new javax.swing.JPanel();
         addStudent = new javax.swing.JButton();
@@ -38,7 +35,6 @@ public class AdminPanel extends javax.swing.JFrame {
         updateStudentDetails = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1500, 847));
 
         adminHomePanel.setLayout(new java.awt.CardLayout());
 
@@ -231,9 +227,6 @@ public class AdminPanel extends javax.swing.JFrame {
     public javax.swing.JPanel adminHomePanel;
     private javax.swing.JButton checkStudent;
     private javax.swing.JButton displayAllStudents;
-    private javax.swing.ButtonGroup gen;
-    private javax.swing.ButtonGroup gender;
-    private javax.swing.ButtonGroup hel;
     public javax.swing.JPanel homePanel;
     private javax.swing.JButton removeStudent;
     private javax.swing.JButton updateStudentDetails;
