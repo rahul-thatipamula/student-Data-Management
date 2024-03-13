@@ -29,7 +29,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="updateStudentPane" alignment="0" pref="755" max="32767" attributes="0"/>
+          <Component id="updateStudentPane" alignment="0" pref="736" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -64,10 +64,10 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rollNumLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="fatherNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="motherNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="dobLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel26" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
                                           <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -75,17 +75,16 @@
                                           <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel25" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
                                           <Component id="jLabel27" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="studentNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="studentNameField1" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="changePhotoBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="male" min="-2" max="-2" attributes="0"/>
+                                              <Component id="male1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="female" min="-2" max="-2" attributes="0"/>
+                                              <Component id="female1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="others" min="-2" pref="78" max="-2" attributes="0"/>
+                                              <Component id="others1" min="-2" pref="78" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="courseDurationField1" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="rollNumberField1" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -97,6 +96,7 @@
                                           <Component id="attendaceField1" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="gpaField1" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jScrollPane3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="studentNameField1" linkSize="1" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -107,7 +107,7 @@
                                               <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel24" min="-2" pref="130" max="-2" attributes="0"/>
+                                              <Component id="photoLabel" min="-2" pref="130" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -117,7 +117,7 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                              <Component id="rollNumberLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               <Component id="updateRollNumberField" min="-2" pref="118" max="-2" attributes="0"/>
                           </Group>
@@ -145,12 +145,12 @@
                       <Component id="backBtn1" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rollNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="updateRollNumberField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace type="separate" pref="48" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" pref="61" max="32767" attributes="0"/>
                               <Component id="photoStudent" min="-2" pref="282" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                               <Component id="changePhotoBtn" min="-2" max="-2" attributes="0"/>
@@ -159,40 +159,40 @@
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="checkUpdateBtn" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                              <Component id="jLabel24" min="-2" pref="48" max="-2" attributes="0"/>
+                              <Component id="photoLabel" min="-2" pref="48" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="studentNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="studentNameField1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="rollNumberField1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rollNumLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="fatherNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="fatherNameField1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="motherNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="motherNameField1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                              <Component id="dobLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="male" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="female" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="others" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="male1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="female1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="others1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -237,7 +237,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel14">
+            <Component class="javax.swing.JLabel" name="studentNameLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -245,7 +245,7 @@
                 <Property name="text" type="java.lang.String" value="Student Name"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel16">
+            <Component class="javax.swing.JLabel" name="rollNumLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -253,7 +253,7 @@
                 <Property name="text" type="java.lang.String" value="Roll Number"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel17">
+            <Component class="javax.swing.JLabel" name="fatherNameLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -261,7 +261,7 @@
                 <Property name="text" type="java.lang.String" value="Father Name"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel18">
+            <Component class="javax.swing.JLabel" name="motherNameLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -269,7 +269,7 @@
                 <Property name="text" type="java.lang.String" value="Mother Name"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel19">
+            <Component class="javax.swing.JLabel" name="dobLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -444,7 +444,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateBtnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="male">
+            <Component class="javax.swing.JRadioButton" name="male1">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="gender"/>
@@ -452,11 +452,10 @@
                 <Property name="text" type="java.lang.String" value="Male"/>
               </Properties>
               <Events>
-                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="maleStateChanged"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="maleActionPerformed"/>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="male1StateChanged"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="female">
+            <Component class="javax.swing.JRadioButton" name="female1">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="gender"/>
@@ -464,12 +463,12 @@
                 <Property name="text" type="java.lang.String" value="Female"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="others">
+            <Component class="javax.swing.JRadioButton" name="others1">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="gender"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Others"/>
+                <Property name="text" type="java.lang.String" value="others"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel27">
@@ -500,7 +499,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="updateRollNumberField">
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel28">
+            <Component class="javax.swing.JLabel" name="rollNumberLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="2"/>
@@ -524,7 +523,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changePhotoBtnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel24">
+            <Component class="javax.swing.JLabel" name="photoLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>

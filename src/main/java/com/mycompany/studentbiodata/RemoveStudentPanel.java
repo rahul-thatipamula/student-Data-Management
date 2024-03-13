@@ -36,7 +36,7 @@ public class RemoveStudentPanel extends javax.swing.JPanel {
         rollNumberToRemoveField = new javax.swing.JTextField();
         removeBtn = new javax.swing.JButton();
         removeStatus = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
 
         rollNumber.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         rollNumber.setText("Roll Number");
@@ -51,10 +51,10 @@ public class RemoveStudentPanel extends javax.swing.JPanel {
         removeStatus.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         removeStatus.setForeground(new java.awt.Color(255, 0, 0));
 
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                backBtnActionPerformed(evt);
             }
         });
 
@@ -79,13 +79,13 @@ public class RemoveStudentPanel extends javax.swing.JPanel {
                     .addGroup(removeStudentPanelLayout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(removeBtn))
-                    .addComponent(jButton1))
+                    .addComponent(backBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         removeStudentPanelLayout.setVerticalGroup(
             removeStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(removeStudentPanelLayout.createSequentialGroup()
-                .addComponent(jButton1)
+                .addComponent(backBtn)
                 .addGap(21, 21, 21)
                 .addGroup(removeStudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rollNumber)
@@ -110,42 +110,31 @@ public class RemoveStudentPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
-
-        
-        try {
-            Connection con = GetConnection.createConnection();
-
             String query = "delete from studentBiodata where ROLLNUMBER = ?";
-            PreparedStatement statement = con.prepareStatement(query);
-            statement.setString(1, rollNumberToRemoveField.getText());
-            int x = statement.executeUpdate();
+            ProcessData processData = new ProcessData(query);
+            boolean status = processData.removeStudent( rollNumberToRemoveField.getText());
 
-            if (x == 1) {
+            if (status) {
                 removeStatus.setText(rollNumberToRemoveField.getText() + " removed Successfully");
-
             } else {
                 removeStatus.setText("No such roll number found..");
-            }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+            } 
     }//GEN-LAST:event_removeBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
        adminPanelRef.adminHomePanel.remove(this);
        adminPanelRef.adminHomePanel.add(adminPanelRef.homePanel);
         adminPanelRef.adminHomePanel.repaint();
         adminPanelRef.adminHomePanel.revalidate();
          
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_backBtnActionPerformed
          AdminPanel adminPanelRef=null;
         public void AdminPanelReference(AdminPanel adminPanelRef){
             this.adminPanelRef = adminPanelRef;
         }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton backBtn;
     private javax.swing.JButton removeBtn;
     private javax.swing.JLabel removeStatus;
     private javax.swing.JPanel removeStudentPanel;

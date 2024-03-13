@@ -16,9 +16,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -33,9 +32,10 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
     /**
      * Creates new form UpdateStudentPanel
      */
+    SetGetStudentData  setGetStudentData=null;
     public UpdateStudentPanel() {
+        SetGetStudentData  setGetStudentData = new SetGetStudentData();
         initComponents();
-        setGetStudentData = new SetGetStudentData();
     }
 
     /**
@@ -50,11 +50,11 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
         gender = new javax.swing.ButtonGroup();
         updateStudentPane = new javax.swing.JScrollPane();
         updateStudentPanel1 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        studentNameLabel = new javax.swing.JLabel();
+        rollNumLabel = new javax.swing.JLabel();
+        fatherNameLabel = new javax.swing.JLabel();
+        motherNameLabel = new javax.swing.JLabel();
+        dobLabel = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -72,18 +72,18 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         addressField1 = new javax.swing.JTextArea();
         updateBtn = new javax.swing.JButton();
-        male = new javax.swing.JRadioButton();
-        female = new javax.swing.JRadioButton();
-        others = new javax.swing.JRadioButton();
+        male1 = new javax.swing.JRadioButton();
+        female1 = new javax.swing.JRadioButton();
+        others1 = new javax.swing.JRadioButton();
         jLabel27 = new javax.swing.JLabel();
         gpaField1 = new javax.swing.JTextField();
         backBtn1 = new javax.swing.JButton();
         dateOfBirthField1 = new javax.swing.JTextField();
         updateRollNumberField = new javax.swing.JTextField();
-        jLabel28 = new javax.swing.JLabel();
+        rollNumberLabel = new javax.swing.JLabel();
         checkUpdateBtn = new javax.swing.JButton();
         changePhotoBtn = new javax.swing.JButton();
-        jLabel24 = new javax.swing.JLabel();
+        photoLabel = new javax.swing.JLabel();
         photoStudent = new javax.swing.JLabel();
 
         updateStudentPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -91,22 +91,26 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
         updateStudentPane.setName(""); // NOI18N
 
         updateStudentPanel1.setPreferredSize(new java.awt.Dimension(1000, 1000));
-        
+        updateStudentPanel1.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                updateStudentPanel1ComponentAdded(evt);
+            }
+        });
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel14.setText("Student Name");
+        studentNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        studentNameLabel.setText("Student Name");
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel16.setText("Roll Number");
+        rollNumLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        rollNumLabel.setText("Roll Number");
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel17.setText("Father Name");
+        fatherNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        fatherNameLabel.setText("Father Name");
 
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel18.setText("Mother Name");
+        motherNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        motherNameLabel.setText("Mother Name");
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel19.setText("Date of Birth");
+        dobLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        dobLabel.setText("Date of Birth");
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel20.setText("Branch");
@@ -127,52 +131,102 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
         jLabel26.setText("Email ID");
 
         studentNameField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        
+        studentNameField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                studentNameField1ActionPerformed(evt);
+            }
+        });
 
         rollNumberField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        
+        rollNumberField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rollNumberField1ActionPerformed(evt);
+            }
+        });
 
         fatherNameField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-       
+        fatherNameField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fatherNameField1ActionPerformed(evt);
+            }
+        });
 
         motherNameField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-       
+        motherNameField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                motherNameField1ActionPerformed(evt);
+            }
+        });
 
         emailIdField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-       
+        emailIdField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailIdField1ActionPerformed(evt);
+            }
+        });
 
         branchField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-      
+        branchField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                branchField1ActionPerformed(evt);
+            }
+        });
 
         attendaceField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-       
+        attendaceField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                attendaceField1ActionPerformed(evt);
+            }
+        });
 
         courseDurationField1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023-2027", "2022-2026", "2021-2025 ", "2020-2024", "2019-2023 ", "2018-2022", "2017-2021 ", "2016-2020", "2015-2019" }));
-        
+        courseDurationField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                courseDurationField1ActionPerformed(evt);
+            }
+        });
 
         addressField1.setColumns(20);
         addressField1.setRows(5);
-       
+        addressField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                addressField1InputMethodTextChanged(evt);
+            }
+        });
         jScrollPane3.setViewportView(addressField1);
 
         updateBtn.setText("Update");
-      
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
 
-        gender.add(male);
-        male.setText("Male");
-       
-      
+        gender.add(male1);
+        male1.setText("Male");
+        male1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                male1StateChanged(evt);
+            }
+        });
 
-        gender.add(female);
-        female.setText("Female");
+        gender.add(female1);
+        female1.setText("Female");
 
-        gender.add(others);
-        others.setText("Others");
+        gender.add(others1);
+        others1.setText("others");
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel27.setText("Current CGPA");
 
-      
+        gpaField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gpaField1ActionPerformed(evt);
+            }
+        });
+
         backBtn1.setText("back");
         backBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,10 +234,14 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
             }
         });
 
-       
+        dateOfBirthField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateOfBirthField1ActionPerformed(evt);
+            }
+        });
 
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        jLabel28.setText("Roll Number : ");
+        rollNumberLabel.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        rollNumberLabel.setText("Roll Number : ");
 
         checkUpdateBtn.setText("check");
         checkUpdateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -199,8 +257,8 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel24.setText("Photo");
+        photoLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        photoLabel.setText("Photo");
 
         photoStudent.setIcon(new javax.swing.ImageIcon("D:\\javaProjectEamcet\\studentBioData\\src\\images\\emptyPhoto.jpg")); // NOI18N
         photoStudent.setMinimumSize(new java.awt.Dimension(300, 300));
@@ -218,10 +276,10 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
                         .addGroup(updateStudentPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(updateStudentPanel1Layout.createSequentialGroup()
                                 .addGroup(updateStudentPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jLabel19)
+                                    .addComponent(rollNumLabel)
+                                    .addComponent(fatherNameLabel)
+                                    .addComponent(motherNameLabel)
+                                    .addComponent(dobLabel)
                                     .addComponent(jLabel23)
                                     .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel20)
@@ -229,16 +287,15 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel22)
                                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel27)
-                                    .addComponent(jLabel14))
+                                    .addComponent(studentNameLabel))
                                 .addGroup(updateStudentPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(studentNameField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(changePhotoBtn)
                                     .addGroup(updateStudentPanel1Layout.createSequentialGroup()
-                                        .addComponent(male)
+                                        .addComponent(male1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(female)
+                                        .addComponent(female1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(others, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(others1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(courseDurationField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(rollNumberField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(fatherNameField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,7 +305,8 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
                                     .addComponent(branchField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(attendaceField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(gpaField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(studentNameField1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(updateStudentPanel1Layout.createSequentialGroup()
                                 .addGroup(updateStudentPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(updateStudentPanel1Layout.createSequentialGroup()
@@ -256,12 +314,12 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
                                         .addComponent(checkUpdateBtn)
                                         .addGap(70, 70, 70))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateStudentPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(32, 32, 32)))
                                 .addGap(3, 3, 3)
                                 .addComponent(photoStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(updateStudentPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel28)
+                        .addComponent(rollNumberLabel)
                         .addGap(37, 37, 37)
                         .addComponent(updateRollNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -284,11 +342,11 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
                 .addComponent(backBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(updateStudentPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel28)
+                    .addComponent(rollNumberLabel)
                     .addComponent(updateRollNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(updateStudentPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(updateStudentPanel1Layout.createSequentialGroup()
-                        .addGap(18, 48, Short.MAX_VALUE)
+                        .addGap(18, 61, Short.MAX_VALUE)
                         .addComponent(photoStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(changePhotoBtn))
@@ -296,34 +354,34 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
                         .addGap(22, 22, 22)
                         .addComponent(checkUpdateBtn)
                         .addGap(98, 98, 98)
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(4, 4, 4)
                 .addGroup(updateStudentPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
+                    .addComponent(studentNameLabel)
                     .addComponent(studentNameField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(updateStudentPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rollNumberField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16))
+                    .addComponent(rollNumLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(updateStudentPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
+                    .addComponent(fatherNameLabel)
                     .addComponent(fatherNameField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(updateStudentPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
+                    .addComponent(motherNameLabel)
                     .addComponent(motherNameField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(updateStudentPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(updateStudentPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel19)
+                        .addComponent(dobLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(updateStudentPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel23)
-                            .addComponent(male)
-                            .addComponent(female)
-                            .addComponent(others))
+                            .addComponent(male1)
+                            .addComponent(female1)
+                            .addComponent(others1))
                         .addGap(18, 18, 18)
                         .addGroup(updateStudentPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel26)
@@ -370,14 +428,49 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(updateStudentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+            .addComponent(updateStudentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    SetGetStudentData setGetStudentData = null;
-    boolean changePhotoStatus = false;
-    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+    private void studentNameField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentNameField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_studentNameField1ActionPerformed
 
+    private void rollNumberField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollNumberField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rollNumberField1ActionPerformed
+
+    private void fatherNameField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fatherNameField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fatherNameField1ActionPerformed
+
+    private void motherNameField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_motherNameField1ActionPerformed
+
+    }//GEN-LAST:event_motherNameField1ActionPerformed
+
+    private void emailIdField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailIdField1ActionPerformed
+
+    }//GEN-LAST:event_emailIdField1ActionPerformed
+
+    private void branchField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_branchField1ActionPerformed
+
+    }//GEN-LAST:event_branchField1ActionPerformed
+
+    private void attendaceField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attendaceField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_attendaceField1ActionPerformed
+
+    private void courseDurationField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseDurationField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_courseDurationField1ActionPerformed
+
+    private void addressField1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_addressField1InputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addressField1InputMethodTextChanged
+    
+        boolean changePhotoStatus = false;
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        
         setGetStudentData.setName(studentNameField1.getText());
         setGetStudentData.setRollNumber(rollNumberField1.getText());
         setGetStudentData.setFatherName(fatherNameField1.getText());
@@ -385,15 +478,15 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
         setGetStudentData.setDateOfBirth(dateOfBirthField1.getText());
         setGetStudentData.setEmail(emailIdField1.getText());
         setGetStudentData.setBranch(branchField1.getText());
-        if (attendaceField1.getText().isEmpty()) {
-            setGetStudentData.setAttendancePercentage(0.0);
-        } else {
-            setGetStudentData.setAttendancePercentage(Double.parseDouble(attendaceField1.getText()));
+        if(attendaceField1.getText().isEmpty()){
+             setGetStudentData.setAttendancePercentage(0.0);
+        }else{
+        setGetStudentData.setAttendancePercentage(Double.parseDouble(attendaceField1.getText()));
         }
-        if (gpaField1.getText().isEmpty()) {
-            setGetStudentData.setCgpa(0.0);
-        } else {
-            setGetStudentData.setCgpa(Double.parseDouble(gpaField1.getText()));
+        if(gpaField1.getText().isEmpty()){
+             setGetStudentData.setCgpa(0.0);
+        }else{
+        setGetStudentData.setCgpa(Double.parseDouble(gpaField1.getText()));
         }
         setGetStudentData.setAddress(addressField1.getText());
         setGetStudentData.setCourseDuration((String) courseDurationField1.getSelectedItem());
@@ -406,8 +499,40 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
                 break;
             }
         }
-
-        if (setGetStudentData.getName() != null
+        ProcessData processData = new ProcessData();
+        
+        if(changePhotoStatus){
+            
+            if (processData.nullCheck(setGetStudentData)) {
+                    String query = "UPDATE STUDENTBIODATA SET "
+                    + "NAME = ?, "
+                    + "FATHERNAME = ?, "
+                    + "MOTHERNAME = ?, "
+                    + "DATEOFBIRTH = ?, "
+                    + "GENDER = ?, "
+                    + "EMAIL = ?, "
+                    + "BRANCH = ?, "
+                    + "ATTENDANCEPERCENTAGE = ?, "
+                    + "CGPA = ?, "
+                    + "COURSEDURATION = ?, "
+                    + "ADDRESS = ?, "
+                    + "PHOTO = ? "
+                    + "WHERE ROLLNUMBER = ?";
+                    processData.setPreparedStatement(query);
+                 
+                   boolean status = processData.addStudent(setGetStudentData);
+                    if (status) {
+                        JOptionPane.showMessageDialog(null, "Data successfully saved.");
+                    } else {
+                       JOptionPane.showMessageDialog(null, "Data not saved");
+                    }
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Enter all Fields to Save");
+            }
+        }
+        else{
+            if (setGetStudentData.getName() != null
                 && setGetStudentData.getRollNumber() != null
                 && setGetStudentData.getFatherName() != null
                 && setGetStudentData.getMotherName() != null
@@ -419,98 +544,80 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
                 && setGetStudentData.getCgpa() != 0
                 && setGetStudentData.getCourseDuration() != null
                 && setGetStudentData.getAddress() != null) {
-            try {
-                Connection con = GetConnection.createConnection();
-                String query = null;
-                if (setGetStudentData.getPhotoPath() != null && changePhotoStatus == true) {
+                try {
+                    Connection con = GetConnection.createConnection();
 
-                    query = "UPDATE STUDENTBIODATA SET "
-                            + "NAME = ?, "
-                            + "FATHERNAME = ?, "
-                            + "MOTHERNAME = ?, "
-                            + "DATEOFBIRTH = ?, "
-                            + "GENDER = ?, "
-                            + "EMAIL = ?, "
-                            + "BRANCH = ?, "
-                            + "ATTENDANCEPERCENTAGE = ?, "
-                            + "CGPA = ?, "
-                            + "COURSEDURATION = ?, "
-                            + "ADDRESS = ?, "
-                            + "PHOTO = ? "
-                            + "WHERE ROLLNUMBER = ?";
-                } else {
-
-                    query = "UPDATE STUDENTBIODATA SET "
-                            + "NAME = ?, "
-                            + "FATHERNAME = ?, "
-                            + "MOTHERNAME = ?, "
-                            + "DATEOFBIRTH = ?, "
-                            + "GENDER = ?, "
-                            + "EMAIL = ?, "
-                            + "BRANCH = ?, "
-                            + "ATTENDANCEPERCENTAGE = ?, "
-                            + "CGPA = ?, "
-                            + "COURSEDURATION = ?, "
-                            + "ADDRESS = ? "
-                            + "WHERE ROLLNUMBER = ?";
-
-                }
-                PreparedStatement preparedStatement = con.prepareStatement(query);
-                preparedStatement.setString(1, setGetStudentData.getName());
-                preparedStatement.setString(2, setGetStudentData.getFatherName());
-                preparedStatement.setString(3, setGetStudentData.getMotherName());
-                preparedStatement.setString(4, setGetStudentData.getDateOfBirth());
-                preparedStatement.setString(5, setGetStudentData.getGender());
-                preparedStatement.setString(6, setGetStudentData.getEmail());
-                preparedStatement.setString(7, setGetStudentData.getBranch());
-                preparedStatement.setDouble(8, setGetStudentData.getAttendancePercentage());
-                preparedStatement.setDouble(9, setGetStudentData.getCgpa());
-                preparedStatement.setString(10, setGetStudentData.getCourseDuration());
-                preparedStatement.setString(11, setGetStudentData.getAddress());
-                if (setGetStudentData.getPhotoPath() != null && changePhotoStatus == true) {
-                    preparedStatement.setBlob(12, setGetStudentData.getPhotoPath());
-                    preparedStatement.setString(13, setGetStudentData.getRollNumber());
-                } else {
+                    String query = "UPDATE STUDENTBIODATA SET "
+                    + "NAME = ?, "
+                    + "FATHERNAME = ?, "
+                    + "MOTHERNAME = ?, "
+                    + "DATEOFBIRTH = ?, "
+                    + "GENDER = ?, "
+                    + "EMAIL = ?, "
+                    + "BRANCH = ?, "
+                    + "ATTENDANCEPERCENTAGE = ?, "
+                    + "CGPA = ?, "
+                    + "COURSEDURATION = ?, "
+                    + "ADDRESS = ? "
+                    + "WHERE ROLLNUMBER = ?";
+                    PreparedStatement preparedStatement = con.prepareStatement(query);
+                    preparedStatement.setString(1, setGetStudentData.getName());
                     preparedStatement.setString(12, setGetStudentData.getRollNumber());
-                }
+                    preparedStatement.setString(2, setGetStudentData.getFatherName());
+                    preparedStatement.setString(3, setGetStudentData.getMotherName());
+                    preparedStatement.setString(4, setGetStudentData.getDateOfBirth());
+                    preparedStatement.setString(5, setGetStudentData.getGender());
+                    preparedStatement.setString(6, setGetStudentData.getEmail());
+                    preparedStatement.setString(7, setGetStudentData.getBranch());
+                    preparedStatement.setDouble(8, setGetStudentData.getAttendancePercentage());
+                    preparedStatement.setDouble(9, setGetStudentData.getCgpa());
+                    preparedStatement.setString(10, setGetStudentData.getCourseDuration());
+                    preparedStatement.setString(11, setGetStudentData.getAddress());
+                    int x = preparedStatement.executeUpdate();
+                    if (x == 1) {
+                        JOptionPane.showMessageDialog(null, "Data successfully saved.");
+                    } else {
+                        throw new SQLException("Error something went wrong!!!");
+                    }
 
-                int x = preparedStatement.executeUpdate();
-                if (x == 1) {
-                    JOptionPane.showMessageDialog(null, "Data successfully saved.");
-                } else {
-                    throw new SQLException("Error something went wrong!!!");
-                }
-
-            } catch (Exception s) {
-                String errorMessage = s.getMessage();
-                if (errorMessage.contains("date") || errorMessage.contains("format")) {
-                    JOptionPane.showMessageDialog(null, "Date formatting error occurred: " + errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(null, "An error occurred: " + errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception s) {
+                    JOptionPane.showMessageDialog(null, "Unexcepted-Error");
+                    adminPanelRef.dispose();
+                    s.printStackTrace();
                 }
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Enter all Fields to Save");
+            else {
+                JOptionPane.showMessageDialog(null, "Enter all Fields to Save");
+            }
         }
 
     }//GEN-LAST:event_updateBtnActionPerformed
 
+    private void male1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_male1StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_male1StateChanged
+
+    private void gpaField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gpaField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gpaField1ActionPerformed
 
     private void backBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtn1ActionPerformed
-        adminPanelRef.adminHomePanel.remove(this);
-        adminPanelRef.adminHomePanel.add(adminPanelRef.homePanel);
-        adminPanelRef.adminHomePanel.repaint();
-        adminPanelRef.adminHomePanel.revalidate();
+       adminPanelRef.adminHomePanel.remove(this);
+       adminPanelRef.adminHomePanel.add(adminPanelRef.homePanel);
+       adminPanelRef.adminHomePanel.repaint();
+       adminPanelRef.adminHomePanel.revalidate();
     }//GEN-LAST:event_backBtn1ActionPerformed
 
-    AdminPanel adminPanelRef = null;
-
-    public void AdminPanelReference(AdminPanel adminPanelRef) {
-        this.adminPanelRef = adminPanelRef;
-    }
+AdminPanel adminPanelRef=null;
+        public void AdminPanelReference(AdminPanel adminPanelRef){
+            this.adminPanelRef = adminPanelRef;
+        }
+    private void dateOfBirthField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateOfBirthField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateOfBirthField1ActionPerformed
 
     private void checkUpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkUpdateBtnActionPerformed
-
+        setGetStudentData = new SetGetStudentData();
         try {
             String rollNumber = updateRollNumberField.getText();
             Connection con = GetConnection.createConnection();
@@ -521,40 +628,60 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
             if (rs.next() != false) {
                 System.out.println(rs);
                 Object[] obj = {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getDouble(9), rs.getDouble(10), rs.getString(11), rs.getString(12)};
+                setGetStudentData.setName((String) obj[0]);
+                setGetStudentData.setRollNumber((String) obj[1]);
+                setGetStudentData.setFatherName((String) obj[2]);
+                setGetStudentData.setMotherName((String) obj[3]);
                 Date date = (Date) obj[4];
                 String pattern = "dd-MM-yyyy";
                 SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-                switch ((String) obj[5]) {
+                setGetStudentData.setDateOfBirth(sdf.format(date));
+                setGetStudentData.setEmail((String) obj[6]);
+                setGetStudentData.setBranch((String) obj[7]);
+                setGetStudentData.setAttendancePercentage((double) obj[8]);
+                setGetStudentData.setCgpa((double) obj[9]);
+                setGetStudentData.setAddress((String) obj[11]);
+                setGetStudentData.setCourseDuration((String) obj[10]);
+
+                switch ((String)obj[5]) {
                     case "Male":
-                        male.setSelected(true);
-                        break;
+                    male1.setSelected(true);
+                    setGetStudentData.setGender("Male");
+                    break;
                     case "Female":
-                        female.setSelected(true);
-                        break;
+                    female1.setSelected(true);
+                    setGetStudentData.setGender("Male");
+                    break;
                     case "others":
-                        others.setSelected(true);
-                        break;
+                    others1.setSelected(true);
+                    setGetStudentData.setGender("Male");
+                    break;
                 }
+
                 Blob blob = rs.getBlob("photo");
                 byte[] imageData = blob.getBytes(1, (int) blob.length());
+
                 ImageIcon imageIcon = new ImageIcon(imageData);
                 Image image = imageIcon.getImage();
+
                 Image resizedImage = image.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
+
                 photoStudent.setIcon(new ImageIcon(resizedImage));
                 photoStudent.setPreferredSize(new Dimension(imageIcon.getIconWidth(), imageIcon.getIconHeight()));
-                studentNameField1.setText((String) obj[0]);
-                rollNumberField1.setText((String) obj[1]);
-                fatherNameField1.setText((String) obj[2]);
-                motherNameField1.setText((String) obj[3]);
-                dateOfBirthField1.setText(sdf.format(date));
-                emailIdField1.setText((String) obj[6]);
-                branchField1.setText((String) obj[7]);
-                attendaceField1.setText(String.valueOf(obj[8]));
-                gpaField1.setText(String.valueOf(obj[9]));
-                courseDurationField1.setSelectedItem((String) obj[10]);
-                addressField1.setText((String) obj[11]);
+                studentNameField1.setText(setGetStudentData.getName());
+                rollNumberField1.setText(setGetStudentData.getRollNumber());
+                fatherNameField1.setText(setGetStudentData.getFatherName());
+                motherNameField1.setText(setGetStudentData.getMotherName());
+                dateOfBirthField1.setText(setGetStudentData.getDateOfBirth());
+                emailIdField1.setText(setGetStudentData.getEmail());
+                branchField1.setText(setGetStudentData.getBranch());
+                attendaceField1.setText(String.valueOf(setGetStudentData.getAttendancePercentage()));
+                gpaField1.setText(String.valueOf(setGetStudentData.getCgpa()));
+                courseDurationField1.setSelectedItem(setGetStudentData.getCourseDuration());
+                addressField1.setText(setGetStudentData.getAddress());
 
-            } else {
+            }
+            else{
                 JOptionPane.showMessageDialog(null, "Roll Number does not exist");
                 updateRollNumberField.setText(null);
             }
@@ -566,25 +693,46 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
     private void changePhotoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePhotoBtnActionPerformed
         JFileChooser fileChooser = new JFileChooser();
         int returnValue = fileChooser.showOpenDialog(null);
+         ArrayList<String> ALLOWED_EXTENSIONS = new ArrayList<String>();
+         ALLOWED_EXTENSIONS.add(".jpg");
+         ALLOWED_EXTENSIONS.add(".jpeg");
+         ALLOWED_EXTENSIONS.add(".png");
+         ALLOWED_EXTENSIONS.add(".gif");
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
+            ProcessData pd = new ProcessData();
+            String extension = pd.getFileExtension(selectedFile.getAbsolutePath());
+            try{
+            if (!ALLOWED_EXTENSIONS.contains(extension.toLowerCase())) {
+                throw new IllegalArgumentException("Photo Format Error");
+            }
+            else{
             try {
                 ImageIcon imageIcon = new ImageIcon(selectedFile.getAbsolutePath());
                 Image image = imageIcon.getImage();
                 Image resizedImage = image.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
                 photoStudent.setIcon(new ImageIcon(resizedImage));
                 changePhotoBtn.setText(selectedFile.getPath());
-                uploadPhotoToDatabase(selectedFile.getPath());
+                uploadPhotoToDatabase(selectedFile);
                 changePhotoStatus = true;
             } catch (SQLException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+                 JOptionPane.showMessageDialog(null, "Error:  " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } 
+            catch(IOException ioe){
+                
             }
+        }}catch(IllegalArgumentException iae){
+            changePhotoBtn.setText("Change Photo");
+            setGetStudentData.setPhotoPath(null);
+              JOptionPane.showMessageDialog(null, "Error:  " + iae.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
         }
     }//GEN-LAST:event_changePhotoBtnActionPerformed
 
-    private void uploadPhotoToDatabase(String selectedFile) throws SQLException, IOException {
+    private void updateStudentPanel1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_updateStudentPanel1ComponentAdded
+
+    }//GEN-LAST:event_updateStudentPanel1ComponentAdded
+private void uploadPhotoToDatabase(File selectedFile) throws SQLException, IOException  {       
         try {
             FileInputStream studentPhotoFile = new FileInputStream(selectedFile);
             setGetStudentData.setPhotoPath(studentPhotoFile);
@@ -592,6 +740,7 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
             ex.printStackTrace();
         }
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea addressField1;
     private javax.swing.JTextField attendaceField1;
@@ -601,32 +750,32 @@ public class UpdateStudentPanel extends javax.swing.JPanel {
     private javax.swing.JButton checkUpdateBtn;
     private javax.swing.JComboBox<String> courseDurationField1;
     private javax.swing.JTextField dateOfBirthField1;
+    private javax.swing.JLabel dobLabel;
     private javax.swing.JTextField emailIdField1;
     private javax.swing.JTextField fatherNameField1;
-    private javax.swing.JRadioButton female;
+    private javax.swing.JLabel fatherNameLabel;
+    private javax.swing.JRadioButton female1;
     private javax.swing.ButtonGroup gender;
     private javax.swing.JTextField gpaField1;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JRadioButton male;
+    private javax.swing.JRadioButton male1;
     private javax.swing.JTextField motherNameField1;
-    private javax.swing.JRadioButton others;
+    private javax.swing.JLabel motherNameLabel;
+    private javax.swing.JRadioButton others1;
+    private javax.swing.JLabel photoLabel;
     private javax.swing.JLabel photoStudent;
+    private javax.swing.JLabel rollNumLabel;
     private javax.swing.JTextField rollNumberField1;
+    private javax.swing.JLabel rollNumberLabel;
     private javax.swing.JTextField studentNameField1;
+    private javax.swing.JLabel studentNameLabel;
     private javax.swing.JButton updateBtn;
     private javax.swing.JTextField updateRollNumberField;
     private javax.swing.JScrollPane updateStudentPane;

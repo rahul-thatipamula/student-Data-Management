@@ -11,9 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.AbstractButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -350,24 +349,40 @@ public class AddStudentPanel extends javax.swing.JPanel {
   
     private void photoSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_photoSelectActionPerformed
         JFileChooser fileChooser = new JFileChooser();
+        File selectedFile =null;
         int returnValue = fileChooser.showOpenDialog(null);
+           ArrayList<String> ALLOWED_EXTENSIONS = new ArrayList<String>();
+         ALLOWED_EXTENSIONS.add(".jpg");
+         ALLOWED_EXTENSIONS.add(".jpeg");
+         ALLOWED_EXTENSIONS.add(".png");
+         ALLOWED_EXTENSIONS.add(".gif");
         if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
+            selectedFile = fileChooser.getSelectedFile();
+            ProcessData pd = new ProcessData();
+            String extension = pd.getFileExtension(selectedFile.getAbsolutePath());
+            try{
+            if (!ALLOWED_EXTENSIONS.contains(extension.toLowerCase())) {
+                throw new IllegalArgumentException("Photo Format Error");
+            }
+            else{
             try {
                 photoSelect.setText(selectedFile.getPath());
                 uploadPhotoToDatabase(selectedFile);
-            } catch (SQLException ex) {
-                 String errorMessage = ex.getMessage();
-           JOptionPane.showMessageDialog(null, "An error occurred: " + errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
-            } catch (IOException ex) {
+            } catch (SQLException | IOException ex) {
                  String errorMessage = ex.getMessage();
            JOptionPane.showMessageDialog(null, "An error occurred: " + errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
             }
+        }}catch(IllegalArgumentException iae){
+            selectedFile=null;
+            setGetStudentData.setPhotoPath(null);
+             photoSelect.setText("select Photo");
+              JOptionPane.showMessageDialog(null, "Error:  " + iae.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
         }
     }//GEN-LAST:event_photoSelectActionPerformed
 SetGetStudentData setGetStudentData=null;
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
-
+            
         setGetStudentData.setName(studentNameField.getText());
         setGetStudentData.setRollNumber(rollNumberField.getText());
         setGetStudentData.setFatherName(fatherNameField.getText());
@@ -397,56 +412,18 @@ SetGetStudentData setGetStudentData=null;
                 break;
             }
         }
-        if (setGetStudentData.getName() != null
-            && setGetStudentData.getRollNumber() != null
-            && setGetStudentData.getFatherName() != null
-            && setGetStudentData.getMotherName() != null
-            && setGetStudentData.getDateOfBirth() != null
-            && setGetStudentData.getGender() != null
-            && setGetStudentData.getEmail() != null
-            && setGetStudentData.getBranch() != null
-            && setGetStudentData.getAttendancePercentage() != 0
-            && setGetStudentData.getCgpa() != 0
-            && setGetStudentData.getCourseDuration() != null
-            && setGetStudentData.getAddress() != null
-            && setGetStudentData.getPhotoPath() != null) {
-            try {
-                Connection con = GetConnection.createConnection();
-
-                String query = "INSERT INTO STUDENTBIODATA (NAME, ROLLNUMBER, FATHERNAME, MOTHERNAME, DATEOFBIRTH, GENDER, EMAIL, BRANCH, ATTENDANCEPERCENTAGE, CGPA, COURSEDURATION, ADDRESS, PHOTO) "
+        String query = "INSERT INTO STUDENTBIODATA (NAME, FATHERNAME, MOTHERNAME, DATEOFBIRTH, GENDER, EMAIL, BRANCH, ATTENDANCEPERCENTAGE, CGPA, COURSEDURATION, ADDRESS, PHOTO,ROLLNUMBER) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                PreparedStatement preparedStatement = con.prepareStatement(query);
-                preparedStatement.setString(1, setGetStudentData.getName());
-                preparedStatement.setString(2, setGetStudentData.getRollNumber());
-                preparedStatement.setString(3, setGetStudentData.getFatherName());
-                preparedStatement.setString(4, setGetStudentData.getMotherName());
-                preparedStatement.setString(5, setGetStudentData.getDateOfBirth());
-                preparedStatement.setString(6, setGetStudentData.getGender());
-                preparedStatement.setString(7, setGetStudentData.getEmail());
-                preparedStatement.setString(8, setGetStudentData.getBranch());
-                preparedStatement.setDouble(9, setGetStudentData.getAttendancePercentage());
-                preparedStatement.setDouble(10, setGetStudentData.getCgpa());
-                preparedStatement.setString(11, setGetStudentData.getCourseDuration());
-                preparedStatement.setString(12, setGetStudentData.getAddress());
-                preparedStatement.setBlob(13, setGetStudentData.getPhotoPath());
-
-                int x = preparedStatement.executeUpdate();
-                if (x == 1) {
+            ProcessData processData = new ProcessData(query);
+        if (processData.nullCheck(setGetStudentData)) {
+                boolean status = processData.addStudent(setGetStudentData);
+                if (status) {
                     JOptionPane.showMessageDialog(null, "Data successfully saved.");
                 } else {
-                    throw new SQLException("Error something went wrong!!!");
+                    JOptionPane.showMessageDialog(null, "Failed to save data ...Try again");    
                 }
-
-            } catch (Exception s) {
-                  String errorMessage = s.getMessage();
-            if (errorMessage.contains("date") || errorMessage.contains("format")) {
-                JOptionPane.showMessageDialog(null, "Date formatting error occurred: " + errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "An error occurred: " + errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
-            }
-            }
-          
-        } else {
+            } 
+         else {
             JOptionPane.showMessageDialog(null, "Enter all Fields to Save");
         }
     }//GEN-LAST:event_submitBtnActionPerformed
@@ -454,42 +431,35 @@ SetGetStudentData setGetStudentData=null;
   
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
           adminPanelRef.adminHomePanel.remove(this);
-       adminPanelRef.adminHomePanel.add(adminPanelRef.homePanel);
-        adminPanelRef.adminHomePanel.repaint();
-        adminPanelRef.adminHomePanel.revalidate();
-         
+          adminPanelRef.adminHomePanel.add(adminPanelRef.homePanel);
+          adminPanelRef.adminHomePanel.repaint();
+          adminPanelRef.adminHomePanel.revalidate();      
     }//GEN-LAST:event_backBtnActionPerformed
-  AdminPanel adminPanelRef=null;
+        AdminPanel adminPanelRef=null;
         public void AdminPanelReference(AdminPanel adminPanelRef){
             this.adminPanelRef = adminPanelRef;
         }
     private void dateOfBirthFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateOfBirthFieldActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_dateOfBirthFieldActionPerformed
 
     private void emailIdFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailIdFieldFocusLost
-        
         EmailVerifier ev = new EmailVerifier(emailIdField.getText());
         if(ev.verifyEmail()){
-           
+
         }else{
             JOptionPane.showMessageDialog(null, "Email Format is not Correct");
             emailIdField.setText(null);
-        }
-        
+        } 
     }//GEN-LAST:event_emailIdFieldFocusLost
 
     private void dateOfBirthFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dateOfBirthFieldFocusLost
  
-    
-    
     }//GEN-LAST:event_dateOfBirthFieldFocusLost
  private void uploadPhotoToDatabase(File selectedFile) throws SQLException, IOException  {       
         try {
-          
             FileInputStream studentPhotoFile = new FileInputStream(selectedFile);
             setGetStudentData.setPhotoPath(studentPhotoFile);
-
         } catch (Exception ex) {
             String errorMessage = ex.getMessage();
            JOptionPane.showMessageDialog(null, "An error occurred: " + errorMessage, "Error", JOptionPane.ERROR_MESSAGE);

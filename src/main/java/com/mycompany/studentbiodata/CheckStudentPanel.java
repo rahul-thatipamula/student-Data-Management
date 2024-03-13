@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,7 +39,7 @@ public class CheckStudentPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel5 = new javax.swing.JLabel();
+        rollNumberLabel = new javax.swing.JLabel();
         checkBtn = new javax.swing.JButton();
         rollNumberCheckField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -46,8 +47,8 @@ public class CheckStudentPanel extends javax.swing.JPanel {
         studentPhoto = new javax.swing.JLabel();
         checkBackBtn = new javax.swing.JButton();
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setText("Roll Number");
+        rollNumberLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        rollNumberLabel.setText("Roll Number");
 
         checkBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         checkBtn.setText("Check");
@@ -115,7 +116,7 @@ public class CheckStudentPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
                                 .addComponent(studentPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel5))
+                            .addComponent(rollNumberLabel))
                         .addGap(63, 63, 63)
                         .addComponent(rollNumberCheckField, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(1270, 1270, 1270))
@@ -127,7 +128,7 @@ public class CheckStudentPanel extends javax.swing.JPanel {
                 .addComponent(checkBackBtn)
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
+                    .addComponent(rollNumberLabel)
                     .addComponent(rollNumberCheckField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addComponent(checkBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -187,7 +188,8 @@ public class CheckStudentPanel extends javax.swing.JPanel {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+              JOptionPane.showMessageDialog(null, ex.getMessage());
+        
         }
     }//GEN-LAST:event_checkBtnActionPerformed
 
@@ -205,9 +207,9 @@ AdminPanel adminPanelRef=null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton checkBackBtn;
     private javax.swing.JButton checkBtn;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField rollNumberCheckField;
+    private javax.swing.JLabel rollNumberLabel;
     private javax.swing.JTable studentData;
     private javax.swing.JLabel studentPhoto;
     // End of variables declaration//GEN-END:variables

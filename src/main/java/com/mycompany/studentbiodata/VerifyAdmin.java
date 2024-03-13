@@ -23,30 +23,7 @@ public class VerifyAdmin {
         this.password = password;
        
     }
-    public boolean verifyDetails(){
-        
-                 Connection con;
-		 PreparedStatement preparedStatement;
-		try {
-	
-		con = GetConnection.createConnection();
-		String command = "select * from admindata where username =? and password = ? ";
-                preparedStatement= con.prepareStatement(command);
-                preparedStatement.setString(1, userName);
-                preparedStatement.setString(2, password);
-               ResultSet s = preparedStatement.executeQuery();
-                
-                if(s.next()){
-                    return true; 
-                }
-              
-                
-                }
-                catch(SQLException e){
-                    e.printStackTrace();   
-                }
-                return false;
-    }
+   
     
     
 }
