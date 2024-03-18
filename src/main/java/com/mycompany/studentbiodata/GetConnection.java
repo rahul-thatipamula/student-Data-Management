@@ -19,7 +19,7 @@ public class GetConnection {
 		Connection connection= null;
 		try {
 		Properties properties = new Properties();
-		properties.load(new FileInputStream("d:/oracle.properties"));
+		properties.load(new FileInputStream("D:/studentBioDataProject/sqlConnection/oracle.properties"));
 		connection = DriverManager.getConnection(properties.getProperty("url"),properties.getProperty("username"),properties.getProperty("password"));
 		
 		}
