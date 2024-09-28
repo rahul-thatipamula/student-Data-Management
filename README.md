@@ -15,7 +15,7 @@
 <ul>
   <li>Java</li>
   <li>Swing</li>
-  <li>SQL</li>
+  <li>SQL(Oracle)</li>
   <li>JDBC</li>
 </ul>
 
