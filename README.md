@@ -11,6 +11,13 @@
 
 <p>The Student BioData Management System provides a hassle-free solution for educational institutions seeking a straightforward tool for managing student information effectively.</p>
 
+<h3>Technologies Used</h3>
+<ul>
+  <li>Java</li>
+  <li>Swing</li>
+  <li>SQL</li>
+  <li>JDBC</li>
+</ul>
 
 <h2>Application Snapshot</h2>
 <p>Below are some snapshots of the Student BioData Management System:</p>
